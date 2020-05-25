@@ -26,7 +26,7 @@ class ProductRequest extends FormRequest
         return [
             'name' => 'required|min:10|max:100',
             'price' => 'required',
-            'desc' => 'required|url'
+            'desc' => 'required'
         ];
     }
     public function messages()

@@ -17,4 +17,8 @@ return [
     'label.desc' => 'Desciption',
     'label.price' => 'Price',
 
+    
+    'errors.name.required' => 'Ten bat buoc phai co',
+    'errors_name_min' => 'Ten toi thieu 10 ki tud',
+
 ];

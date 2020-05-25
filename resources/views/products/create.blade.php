@@ -31,6 +31,8 @@
             <option value="1">SamSung</option>
         </select>
 
+        <input type="text" name="" id="" value="{{$brand = App\Models\Brand::find(2)}}">
+
         <button>Submit</button>
     </form>
 
