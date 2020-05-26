@@ -19,6 +19,6 @@ return [
 
     
     'errors.name.required' => 'Ten bat buoc phai co',
-    'errors_name_min' => 'Ten toi thieu 10 ki tud',
+    'errors.name.min' => 'Ten toi thieu 10 ki tud',
 
 ];

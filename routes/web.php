@@ -27,3 +27,4 @@ Route::get('show/{id}', 'MyController@show');
 Route::get('tong/{a}/{b}', 'MyController@tong');
 
 Route::resource('products', 'ProductController');
+Route::resource('brands', 'BrandController');

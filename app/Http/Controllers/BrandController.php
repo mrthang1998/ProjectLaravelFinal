@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProductRequest;
-use App\Models\Product;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+use App\Models\Brand;
 
-class ProductController extends Controller
+class BrandController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +14,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
-        return view('products.index', array('products' => $products));
+        $brands = Brand::all();
+        return view('brands.index', array('brands' => $brands));
     }
 
     /**
@@ -27,7 +25,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        return view('brands.create');
     }
 
     /**
@@ -36,13 +34,10 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductRequest $request)
+    public function store(Request $request)
     {
-        $product = Product::create($request->all());
-        if($product) {
-            return redirect()->route('products.index');
-        }
-        return redirect()->route('products.create');
+        $brand = Brand::create($request->all());
+        return redirect()->route('brands.index');
     }
 
     /**
@@ -53,8 +48,8 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $product = \App\Models\Product::find($id);
-        return view('products.show', array('product' => $product));
+        $brand = Brand::find($id);
+        return view('brands.show', array('brand' => $brand));
     }
 
     /**
@@ -65,8 +60,8 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $product = \App\Models\Product::find($id);
-        return view('products.edit', array('product' => $product));
+        $brand = \App\Models\Brand::find($id);
+        return view('brands.edit', array('brand' => $brand));
     }
 
     /**
@@ -78,16 +73,10 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $product = \App\Models\Product::find($id);
-        $product->name = $request['name'];
-        $product->price = $request['price'];
-        $product->desc = $request['description'];
-        $product->brand_id = $request['brand_id'];
-        $product->save();
-        if($product) {
-            return redirect()->route('products.index');
-        }
-        return redirect()->route('products.edit');
+        $brand = Brand::find($id);
+        $brand->name = $request['name'];
+        $brand->save();
+        return redirect()->route('brands.index');
     }
 
     /**
@@ -98,10 +87,8 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $product=\App\Models\Product::find($id);
-        $product->delete();
-        return redirect()->route('products.index');
-        
-       
+        $brand = Brand::find($id);
+        $brand->delete();
+        return redirect()->route('brands.index');
     }
 }

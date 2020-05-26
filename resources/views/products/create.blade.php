@@ -27,14 +27,17 @@
             </span>
         @endif
 
+        <?php $brands =App\Models\Brand::all() ?>
         <select name="brand_id"><br/>
-            <option value="1">SamSung</option>
+            @foreach($brands as $brand)
+                <option value="{{$brand->id}}">{{ $brand->name }}</option>
+            @endforeach
         </select>
-
-        <input type="text" name="" id="" value="{{$brand = App\Models\Brand::find(2)}}">
-
         <button>Submit</button>
     </form>
+
+    
+    
 
 </body>
 </html>

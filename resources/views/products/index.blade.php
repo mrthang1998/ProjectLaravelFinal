@@ -13,15 +13,17 @@
                 <td>Name Product</td>
                 <td>Price</td>
                 <td>Description</td>
+                <td>Brand</td>
                 <td> <a href="{{ route('products.create') }}">Create</a> </td>
             </tr>
         @foreach($products as $product)
-              
             <tr>
                 <td> {{$product->id}}</td>
                 <td> {{$product->name}}</td>
                 <td> {{$product->price}}</td>
                 <td> {{ $product->desc }} </td>
+                <?php $brand =App\Models\Brand::find($product->brand_id) ?>
+                <td> {{ $brand->name }}</td>
                 <td> <a href="{{ route('products.edit', $product->id) }}">Update</a> </td>
                 <td>
                 <form action="{{ route('products.destroy', $product->id) }}" method="POST">
