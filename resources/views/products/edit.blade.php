@@ -17,6 +17,7 @@
         <select name="brand_id"><br/>
             @foreach(App\Models\Brand::all() as $brand)
                 <option value="{{$brand->id}}">{{ $brand->name }}</option>
+                
             @endforeach
         </select>
         <input type="submit" value="UPDATE">

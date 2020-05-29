@@ -16,7 +16,7 @@
             <tr>
                 <td>{{ $brand->id }}</td>
                 <td>{{ $brand->name }}</td>
-                <td><a href="{{ route('brands.edit', $brand->id) }}">Update</a></td>
+                <td><a href="{{ route('brands.edit', $brand->id) }}">Edit</a></td>
                 <td>
                 <form action="{{ route('brands.destroy', $brand->id) }}" method="POST">
                     {{ csrf_field() }}
