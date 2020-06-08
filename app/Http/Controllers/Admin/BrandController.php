@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Brand;
 
@@ -60,7 +61,7 @@ class BrandController extends Controller
      */
     public function edit($id)
     {
-        $brand = \App\Models\Brand::find($id);
+        $brand = Brand::find($id);
         return view('brands.edit', array('brand' => $brand));
     }
 

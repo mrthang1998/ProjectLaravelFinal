@@ -1,6 +1,13 @@
 a {
-	color: white;
+    color: white;
+}
+#wrapper {
+    
 }
 #content {
     width: 100%;
+}
+
+i {
+    font-size: 30px;
 }

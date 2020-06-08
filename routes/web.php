@@ -11,6 +11,9 @@
 |
 */
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -26,6 +29,19 @@ Route::get('user/{id}', function($id = null){
 Route::get('show/{id}', 'MyController@show');
 Route::get('tong/{a}/{b}', 'MyController@tong');
 
-Route::resource('products', 'ProductController');
-Route::resource('brands', 'BrandController');
+Route::resource('products', 'Admin\ProductController');
+Route::resource('brands', 'Admin\BrandController');
 Route::resource('customers', 'CustomerController');
+
+Route::prefix('admin')->group(function() {
+    Route::resource('products', 'ProductController');
+    Route::resource('brands', 'BrandController');
+});
+Route::get('test', 'BrandController@index')->name('thang');
+Auth::routes();
+
+Route::group(['middleware' => ['web', 'admin'], 'prefix' => 'admin', 'namespace' => 'Admin'], function () {
+    Route::resource('products', 'ProductController');
+    Route::resource('brands', 'BrandController');
+});
+Route::get('/home', 'HomeController@index')->name('home');
