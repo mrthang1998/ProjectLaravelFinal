@@ -18,5 +18,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::namespace('Api')->group(function() {
-    Route::resource('brand', 'BrandController');
+
+    Route::get('brand', 'BrandController@index');
+    Route::get('brand/{id}', 'BrandController@show');
+
+    
+    Route::get('product', 'ProductController@index');
+    Route::get('product/{id}', 'ProductController@show');
 });
