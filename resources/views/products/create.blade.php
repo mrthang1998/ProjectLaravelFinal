@@ -9,7 +9,7 @@
             </div>
             <!-- Modal body -->
             <div class="modal-body">
-                <form method="post" action="{{ route('products.store') }}">
+                <form method="post" action="{{ route('products.store') }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <label>{{ trans('product.label.name') }}</label><br/>
                     <input require name="name"><br/>
@@ -36,6 +36,9 @@
                             <option value="{{$brand->id}}">{{ $brand->name }}</option>
                         @endforeach
                     </select>
+                    <input type="file" name="image" required="true">
+                    <br/>
+            
                     <button>Submit</button>
                 </form>    
             </div>

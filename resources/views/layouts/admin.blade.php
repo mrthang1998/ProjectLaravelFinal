@@ -45,6 +45,9 @@
                     <input class="form-control mr-sm-2" type="text" placeholder="Search">
                     <button class="btn btn-success" type="submit">Search</button>
                 </form>
+                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    {{ Auth::user()->name }}  <span class="caret"></span>
+                </a>
             </nav>
             <div class="container-fluid">
             
