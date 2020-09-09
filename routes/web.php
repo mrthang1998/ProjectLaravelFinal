@@ -30,18 +30,23 @@ Route::get('show/{id}', 'MyController@show');
 Route::get('tong/{a}/{b}', 'MyController@tong');
 
 Route::resource('products', 'Admin\ProductController');
-Route::resource('brands', 'Admin\BrandController');
+Route::resource('/','BrandController');
 Route::resource('customers', 'CustomerController');
 
-Route::prefix('admin')->group(function() {
-    Route::resource('products', 'ProductController');
-    Route::resource('brands', 'BrandController');
-});
+// Route::prefix('admin')->group(function() {
+//     Route::resource('products', 'ProductController');
+//     Route::resource('brands', 'BrandController');
+// });
 Route::get('test', 'BrandController@index')->name('thang');
 Auth::routes();
 
-Route::group(['middleware' => ['web', 'admin'], 'prefix' => 'admin', 'namespace' => 'Admin'], function () {
+Route::group(['middleware' => ['admin'], 'prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::resource('products', 'ProductController');
     Route::resource('brands', 'BrandController');
 });
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('detailproduct', function()
+{
+    return view('products.detail');
+});
+
