@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Brand;
+use App\Models\Product;
 
-class BrandController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,21 +16,15 @@ class BrandController extends Controller
     public function index()
     {
         return api_success(
-            array('data' => Brand::all())
+            array('data' => Product::all())
         );
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        $brand = Brand::findOrFail($id);
+        $product = Product::findOrFail($id);
         return api_success(
-            array('data' => $brand->products)
+            array('data' => $product)
         );
     }
 }
